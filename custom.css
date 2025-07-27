@@ -1,0 +1,25 @@
+.explore__grid {
+  margin-block: 4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.explore__card {
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.explore__card:hover {
+  background-color: var(--primary-color);
+}
+
+.explore__card span {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 5px 11px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  transition: 0.3s;
+}
