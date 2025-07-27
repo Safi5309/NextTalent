@@ -47,3 +47,47 @@
   color: #4680e7;
   background-color: #e7edf8;
 }
+.explore__card:nth-child(6) span {
+  color: #34a753;
+  background-color: #f1fef5;
+}
+
+.explore__card:nth-child(7) span {
+  color: #443ee0;
+  background-color: #f6f5ff;
+}
+
+.explore__card:nth-child(8) span {
+  color: #3ac2ba;
+  background-color: #f0fffe;
+}
+
+.explore__card:hover span {
+  color: var(--white);
+  background-color: #794cc7;
+}
+
+.explore__card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  transition: 0.3s;
+}
+
+.explore__card p {
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.explore__card:hover h4 {
+  color: var(--white);
+}
+
+.explore__card:hover p {
+  color: var(--extra-light);
+}
+
+.explore__btn {
+  text-align: center;
+}
