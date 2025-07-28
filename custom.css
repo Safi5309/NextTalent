@@ -91,3 +91,27 @@
 .explore__btn {
   text-align: center;
 }
+/* Shoumik */
+.offer__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 2rem 1rem;
+}
+
+.offer__card img {
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.offer__details {
+  display: flex;
+  align-items: flex-start;
+}
+
+.offer__details span {
+  font-size: 2rem;
+  font-weight: 800;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--text-dark);
+  padding-right: 1rem;
+}
