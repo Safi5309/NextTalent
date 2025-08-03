@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - NextTalent</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: var(--extra-light);
+    }
+
+    .login__container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login__container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .login__container label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .login__container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login__container button {
+      width: 100%;
+    }
+
+    .login__container p {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--text-light);
+    }
+
+    .login__container p a {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login__container">
+    <h2>Login to NextTalent</h2>
+    <form action="login.php" method="POST">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+
+      <button class="btn" type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+</body>
+</html>

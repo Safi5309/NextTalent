@@ -7,42 +7,46 @@
    <link rel="stylesheet" href="register.css" />
 </head>
 <body>
-<form action="register.php" method="POST" id="registrationForm">
-    <h2>Create an Account</h2>
+<form action="register.php" method="POST" enctype="multipart/form-data">
+  <h2>Create an Account</h2>
 
-    <label for="role">Account Type:</label>
-    <select name="role" id="role" onchange="toggleFields()" required>
-      <option value="employee">Job Seeker</option>
-      <option value="company">Company</option>
-    </select>
+  <label>Account Type:</label>
+  <select name="role" onchange="toggleFields()" required>
+    <option value="employee">Job Seeker</option>
+    <option value="company">Company</option>
+  </select>
 
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" required>
+  <label>Name:</label>
+  <input type="text" name="name" required>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required>
+  <label>Email:</label>
+  <input type="email" name="email" required>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required>
+  <label>Password:</label>
+  <input type="password" name="password" required>
 
-    <div id="employeeFields">
-      <label for="skill">Skills:</label>
-      <input type="text" name="skill" id="skill">
+  <label>Upload Profile Picture (Optional):</label>
+  <input type="file" name="picture" accept="image/*">
 
-      <label for="experience">Experience (Years):</label>
-      <input type="number" name="experience" id="experience" min="0">
-    </div>
+  <div id="employeeFields">
+    <label>Skills:</label>
+    <input type="text" name="skill">
 
-    <div id="companyFields" style="display: none;">
-      <label for="job_type">Job Type:</label>
-      <input type="text" name="job_type" id="job_type">
+    <label>Experience (Years):</label>
+    <input type="number" name="experience" min="0">
+  </div>
 
-      <label for="salary">Salary Range:</label>
-      <input type="text" name="salary" id="salary">
-    </div>
+  <div id="companyFields" style="display: none;">
+    <label>Job Type:</label>
+    <input type="text" name="job_type">
 
-    <button class="btn" type="submit">Register</button>
-  </form>
+    <label>Salary Range:</label>
+    <input type="text" name="salary">
+  </div>
+
+  <button class="btn" type="submit">Register</button>
+</form>
+
 <script>
     function toggleFields() {
       const role = document.getElementById('role').value;
