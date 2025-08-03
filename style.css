@@ -372,6 +372,27 @@ body {
     background-color: transparent;
     transform: none;
   }
+  /* responsive rest off sections */
+    .steps__grid {
+    margin-top: 6rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .steps__card:nth-child(2n - 1) {
+    transform: translateY(-2rem);
+  }
+
+  .explore__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .job__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .offer__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 /*Shoumik*/
 .offer__grid {
