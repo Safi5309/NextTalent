@@ -1,38 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="styles.css" />
-  <title>Register - NextTalent</title>
-  <style>
-    form {
-      max-width: 500px;
-      margin: 3rem auto;
-      background: #f9f9f9;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    label, input, select {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    input, select {
-      padding: 0.5rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-  </style>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Register - NextTalent</title>
+   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <form action="register.php" method="POST" id="registrationForm">
+<form action="register.php" method="POST" id="registrationForm">
     <h2>Create an Account</h2>
 
     <label for="role">Account Type:</label>
@@ -41,40 +16,40 @@
       <option value="company">Company</option>
     </select>
 
-    <label>Name:</label>
-    <input type="text" name="name" required>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
 
-    <label>Email:</label>
-    <input type="email" name="email" required>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
 
-    <label>Password:</label>
-    <input type="password" name="password" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
 
     <div id="employeeFields">
-      <label>Skills:</label>
-      <input type="text" name="skill">
+      <label for="skill">Skills:</label>
+      <input type="text" name="skill" id="skill">
 
-      <label>Experience (Years):</label>
-      <input type="number" name="experience" min="0">
+      <label for="experience">Experience (Years):</label>
+      <input type="number" name="experience" id="experience" min="0">
     </div>
 
     <div id="companyFields" style="display: none;">
-      <label>Job Type:</label>
-      <input type="text" name="job_type">
+      <label for="job_type">Job Type:</label>
+      <input type="text" name="job_type" id="job_type">
 
-      <label>Salary Range:</label>
-      <input type="text" name="salary">
+      <label for="salary">Salary Range:</label>
+      <input type="text" name="salary" id="salary">
     </div>
 
     <button class="btn" type="submit">Register</button>
   </form>
-
-  <script>
+<script>
     function toggleFields() {
       const role = document.getElementById('role').value;
       document.getElementById('employeeFields').style.display = role === 'employee' ? 'block' : 'none';
       document.getElementById('companyFields').style.display = role === 'company' ? 'block' : 'none';
     }
+    document.addEventListener('DOMContentLoaded', toggleFields);
   </script>
 </body>
 </html>
