@@ -485,3 +485,17 @@ body {
 }
 
     
+@media (width > 1024px) {
+  .steps__card {
+    padding: 1.5rem;
+  }
+
+  .explore__card {
+    padding: 1.5rem;
+  }
+
+  .offer__grid {
+    gap: 2rem;
+  }
+}
+
