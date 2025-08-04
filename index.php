@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +35,22 @@
         <li><a href="#job">Jobs</a></li>
         <li><a href="#service">Services</a></li>
         <li><a href="#client">Client</a></li>
-        <li><a href="register.html" class="btn">Register</a></li>
-        <li><a href="login.html" class="btn">Login</a></li>
+  <?php if (isset($_SESSION['user'])): ?>
+  <li class="nav__item">
+    <a href="profile.php">
+      <img
+        src="<?php echo !empty($_SESSION['user']['picture']) ? $_SESSION['user']['picture'] : 'assets/default-profile.png'; ?>"
+        alt="Profile"
+        class="pro-img"
+      >
+    </a>
+  </li>
+<?php else: ?>
+  <li><a href="register.html" class="btn">Register</a></li>
+  <li><a href="login.html" class="btn">Login</a></li>
+<?php endif; ?>
+
+
 
       </ul>
     </nav>

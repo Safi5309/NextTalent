@@ -136,7 +136,8 @@ body {
     </div>
 
     <div class="profile-actions">
-  <a href="index.html" class="home-btn">Home</a>
+  <a href="index.php" class="home-btn">Home</a>
+
   <form action="logout.php" method="post" style="display: inline;">
     <button type="submit" class="logout-btn">Logout</button>
   </form>
