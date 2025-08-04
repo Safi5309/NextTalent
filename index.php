@@ -89,34 +89,36 @@
           and Start Your New Career Journey.
         </p>
         <div class="steps__grid">
-          <div class="steps__card">
-            <span><i class="ri-user-fill"></i></span>
-            <h4>Create an Account</h4>
-            <p>
-              Sign up with just a few clicks to unlock exclusive access to a
-              world of job opportunities and landing your dream job. It's quick,
-              easy, and completely free.
-            </p>
-          </div>
-          <div class="steps__card">
-            <span><i class="ri-search-fill"></i></span>
-            <h4>Search Job</h4>
-            <p>
-              Dive into our job database tailored to match your skills and
-              preferences. With our advanced search filters, finding the perfect
-              job has never been easier.
-            </p>
-          </div>
-          <div class="steps__card">
-            <span><i class="ri-file-paper-fill"></i></span>
-            <h4>Upload CV/Resume</h4>
-            <p>
-              Showcase your experience by uploading your CV or resume. Let
-              employers know why you're the perfect candidate for their job
-              openings.
-            </p>
-          </div>
-          <div class="steps__card">
+  <div class="steps__card create-account-btn" style="cursor: pointer;">
+    <span><i class="ri-user-fill"></i></span>
+    <h4>Create an Account</h4>
+    <p>
+      Sign up with just a few clicks to unlock exclusive access to a
+      world of job opportunities and landing your dream job. It's quick,
+      easy, and completely free.
+    </p>
+  </div>
+
+  <div class="steps__card">
+    <span><i class="ri-search-fill"></i></span>
+    <h4>Search Job</h4>
+    <p>
+      Dive into our job database tailored to match your skills and
+      preferences. With our advanced search filters, finding the perfect
+      job has never been easier.
+    </p>
+  </div>
+  
+  <div class="steps__card">
+    <span><i class="ri-file-paper-fill"></i></span>
+    <h4>Upload CV/Resume</h4>
+    <p>
+      Showcase your experience by uploading your CV or resume. Let
+      employers know why you're the perfect candidate for their job
+      openings.
+    </p>
+  </div>
+  <div class="steps__card">
             <span><i class="ri-briefcase-fill"></i></span>
             <h4>Get Job</h4>
             <p>
@@ -125,7 +127,8 @@
               dreaming of.
             </p>
           </div>
-        </div>
+</div>
+
       </div>
     </section>
     
@@ -228,7 +231,6 @@
     </section>
 
 
-  <h2>Sadia Cekec</h2>
 
 
     <!-- Mrinmoy -->
@@ -490,6 +492,24 @@
         Copyright © 2025 NextTalent. All rights reserved.
       </div>
     </footer> 
+<!-- account create card navigation -->
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const createBtn = document.querySelector(".create-account-btn");
+  const isLoggedIn = <?php echo isset($_SESSION['user']) ? 'true' : 'false'; ?>;
+
+  createBtn.addEventListener("click", () => {
+    if (!isLoggedIn) {
+      window.location.href = "register.html";
+    } else {
+      const confirmLogout = confirm("You are already logged in. Do you want to create a new account?");
+      if (confirmLogout) {
+        window.location.href = "logoutResiter.php";
+      }
+    }
+  });
+});
+</script>
 
 </body>
 </html>

@@ -517,3 +517,8 @@ body {
   }
 }
 
+/* account card  hover*/
+.create-account-btn:hover {
+  box-shadow: 0 0 10px rgba(106, 56, 194, 0.2);
+  transform: scale(1.02);
+}
