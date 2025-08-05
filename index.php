@@ -488,6 +488,11 @@
       Copyright © 2025 NextTalent. All rights reserved.
     </div>
   </footer>
+  <!-- explor jobs -->
+  <div class="explore__grid">
+    <p id="no-jobs-msg">No job categories found.</p>
+  </div>
+
   <!-- upload cv form -->
   <form action="uploadCv.php" method="POST" enctype="multipart/form-data" id="cvUploadForm" style="display: none;">
     <input type="file" name="cv" id="cvUploadInput" accept="application/pdf" onchange="document.getElementById('cvUploadForm').submit();" />
@@ -529,7 +534,37 @@
         });
       }
     });
+    document.getElementById("cvUploadInput").click();
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("explore.php")
+        .then(response => response.json())
+        .then(data => {
+          const container = document.querySelector(".explore__grid");
+          const msg = document.getElementById("no-jobs-msg");
+          container.innerHTML = "";
 
+          if (data.length === 0) {
+            msg.style.display = "block";
+          } else {
+            msg.style.display = "none";
+            data.forEach(item => {
+              const card = document.createElement("div");
+              card.className = "explore__card";
+              card.innerHTML = `
+            <span><i class="ri-briefcase-fill"></i></span>
+            <h4>${item.title}</h4>
+            <p>${item.vacancy} job openings</p>
+          `;
+              card.onclick = () => {
+                window.location.href = `job-category.php?title=${encodeURIComponent(item.title)}`;
+              };
+              container.appendChild(card);
+            });
+          }
+        });
+    });
   </script>
 
 

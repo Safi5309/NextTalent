@@ -59,3 +59,5 @@ ScrollReveal().reveal(".offer__card", {
 const swiper = new Swiper(".swiper", {
   loop: true,
 });
+
+// dynamic jobs exolore
