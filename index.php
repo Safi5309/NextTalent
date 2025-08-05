@@ -31,6 +31,9 @@
       <li><a href="#job">Jobs</a></li>
       <li><a href="#service">Services</a></li>
       <li><a href="#client">Client</a></li>
+      <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'company'): ?>
+        <li><a href="jobSeekers.php">Job Seekers</a></li>
+      <?php endif; ?>
       <?php if (isset($_SESSION['user'])): ?>
         <li class="nav__item">
           <a href="profile.php">
@@ -42,6 +45,8 @@
         <li><a href="register.html" class="btn">Register</a></li>
         <li><a href="login.html" class="btn">Login</a></li>
       <?php endif; ?>
+      
+
 
 
 
@@ -93,13 +98,18 @@
         </div>
 
         <div class="steps__card">
-          <span><i class="ri-search-fill"></i></span>
-          <h4>Search Job</h4>
-          <p>
-            Dive into our job database tailored to match your skills and
-            preferences. With our advanced search filters, finding the perfect
-            job has never been easier.
-          </p>
+          <<a href="searchJobs.php" style="text-decoration: none; color: inherit;">
+
+            <span><i class="ri-search-fill"></i></span>
+            <h4>Search Job</h4>
+            <p>
+              Dive into our job database tailored to match your skills and
+              preferences. With our advanced search filters, finding the perfect
+              job has never been easier.
+            </p>
+
+            </a>
+
         </div>
 
         <div class="steps__card upload-cv-btn" style="cursor: pointer;">
@@ -137,50 +147,14 @@
       and Find the Perfect Career Path to Shape Your Future.
     </p>
     <div class="explore__grid">
-      <div class="explore__card">
-        <span><i class="ri-pencil-ruler-2-fill"></i></span>
-        <h4>Design</h4>
-        <p>200+ jobs openings</p>
+      <!-- explore jobs -->
+      <div class="explore__grid">
+        <p id="no-jobs-msg">No job categories found.</p>
       </div>
-      <div class="explore__card">
-        <span><i class="ri-bar-chart-box-fill"></i></span>
-        <h4>Sales</h4>
-        <p>350+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-megaphone-fill"></i></span>
-        <h4>Marketing</h4>
-        <p>500+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-wallet-3-fill"></i></span>
-        <h4>Finance</h4>
-        <p>200+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-car-fill"></i></span>
-        <h4>Automobile</h4>
-        <p>250+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-truck-fill"></i></span>
-        <h4>Logistics / Delivery</h4>
-        <p>1k+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-computer-fill"></i></span>
-        <h4>Admin</h4>
-        <p>100+ jobs openings</p>
-      </div>
-      <div class="explore__card">
-        <span><i class="ri-building-fill"></i></span>
-        <h4>Construction</h4>
-        <p>500+ jobs openings</p>
-      </div>
-    </div>
-    <div class="explore__btn">
-      <button class="btn">View All Categories</button>
-    </div>
+
+      <button id="viewAllBtn" style="display: none;" class="btn">View All Categories</button>
+
+
   </section>
 
   <!-- Shoumik -->
@@ -489,13 +463,12 @@
     </div>
   </footer>
   <!-- explor jobs -->
-  <div class="explore__grid">
-    <p id="no-jobs-msg">No job categories found.</p>
-  </div>
+
 
   <!-- upload cv form -->
   <form action="uploadCv.php" method="POST" enctype="multipart/form-data" id="cvUploadForm" style="display: none;">
-    <input type="file" name="cv" id="cvUploadInput" accept="application/pdf" onchange="document.getElementById('cvUploadForm').submit();" />
+    <input type="file" name="cv" id="cvUploadInput" accept="application/pdf"
+      onchange="document.getElementById('cvUploadForm').submit();" />
   </form>
 
   <!-- account create card navigation -->
@@ -562,6 +535,61 @@
               };
               container.appendChild(card);
             });
+          }
+        });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("explore.php")
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("exploreGrid");
+          const msg = document.getElementById("no-jobs-msg");
+          const viewAllBtn = document.getElementById("viewAllBtn");
+
+          container.innerHTML = "";
+
+          if (data.length === 0) {
+            msg.style.display = "block";
+            viewAllBtn.style.display = "none";
+          } else {
+            msg.style.display = "none";
+
+            data.forEach((item, index) => {
+              const card = document.createElement("div");
+              card.className = "explore__card";
+              card.setAttribute("data-title", item.title);
+
+              if (index >= 8) {
+                card.style.display = "none"; // Hide cards beyond the first 8
+                card.classList.add("hidden-card");
+              }
+
+              card.innerHTML = `
+            <span><i class="ri-briefcase-fill"></i></span>
+            <h4>${item.title}</h4>
+            <p>${item.vacancy} job openings</p>
+          `;
+
+              card.addEventListener("click", () => {
+                window.location.href = `job-category.php?title=${encodeURIComponent(item.title)}`;
+              });
+
+              container.appendChild(card);
+            });
+
+            if (data.length > 8) {
+              viewAllBtn.style.display = "inline-block";
+
+              viewAllBtn.addEventListener("click", () => {
+                document.querySelectorAll(".hidden-card").forEach(card => {
+                  card.style.display = "block";
+                });
+                viewAllBtn.style.display = "none"; // Hide button after click
+              });
+            }
           }
         });
     });
