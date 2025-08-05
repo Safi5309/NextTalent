@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Post Job Listings</title></head>
+<body>
+  <form method="POST" action="saveJobs.php">
+    <label>How many jobs are you offering?</label>
+    <input type="number" id="jobCount" name="jobCount" min="1" max="20" required>
+    <button type="button" onclick="generateInputs()">Next</button>
+
+    <div id="jobsContainer"></div>
+    <button type="submit" style="display:none;" id="submitBtn">Submit Jobs</button>
+  </form>
+
+  <script>
+    function generateInputs() {
+      const count = parseInt(document.getElementById('jobCount').value);
+      const container = document.getElementById('jobsContainer');
+      const submitBtn = document.getElementById('submitBtn');
+      container.innerHTML = "";
+
+      for (let i = 0; i < count; i++) {
+        container.innerHTML += `
+          <div>
+            <label>Job Title:</label>
+            <input type="text" name="jobs[${i}][title]" required>
+            <label>Vacancy:</label>
+            <input type="number" name="jobs[${i}][vacancy]" min="1" required>
+          </div><br>
+        `;
+      }
+      submitBtn.style.display = "inline-block";
+    }
+  </script>
+</body>
+</html>

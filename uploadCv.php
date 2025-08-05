@@ -21,6 +21,8 @@ if ($_FILES['cv']['error'] === 0 && $_FILES['cv']['type'] === 'application/pdf')
   $stmt->execute();
   $stmt->close();
 
+  $_SESSION['user']['cv_path'] = $filename;
+
   header("Location: profile.php");
   exit();
 } else {
