@@ -466,7 +466,7 @@
 
 
   <!-- upload cv form -->
-  <form action="uploadCv.php" method="POST" enctype="multipart/form-data" id="cvUploadForm" style="display: none;">
+  <form action="cvUpload.php" method="POST" enctype="multipart/form-data" id="cvUploadForm" style="display: none;">
     <input type="file" name="cv" id="cvUploadInput" accept="application/pdf"
       onchange="document.getElementById('cvUploadForm').submit();" />
   </form>

@@ -80,5 +80,6 @@ $employees = $result->fetch_all(MYSQLI_ASSOC);
     <?php else: ?>
         <p>No job seekers found.</p>
     <?php endif; ?>
+    <a href="index.php" class="back-button">← Back to Home</a>
 </body>
 </html>
